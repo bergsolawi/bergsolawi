@@ -13,7 +13,12 @@ SECRET_KEY = os.environ.get("JUNTAGRICO_SECRET_KEY")
 
 DEBUG = os.environ.get("JUNTAGRICO_DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["intern.bergsolawi.ch", "bergsolawi.juntagrico.science", "localhost", "0.0.0.0"]
+ALLOWED_HOSTS = [
+    "intern.bergsolawi.ch",
+    "bergsolawi.juntagrico.science",
+    "localhost",
+    "0.0.0.0",
+]
 
 
 # Application definition
@@ -28,13 +33,13 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "juntagrico_webdav",
     "juntagrico",
-    'fontawesomefree',  # benötigt ab 1.6
-    'import_export',  # benötigt ab 1.6
+    "fontawesomefree",  # benötigt ab 1.6
+    "import_export",  # benötigt ab 1.6
     "impersonate",
     "crispy_forms",
-    'adminsortable2',
+    "adminsortable2",
     "bergsolawi",
-    'polymorphic',
+    "polymorphic",
 ]
 
 ROOT_URLCONF = "bergsolawi.urls"
@@ -126,7 +131,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "impersonate.middleware.ImpersonateMiddleware",
-    'django.contrib.sites.middleware.CurrentSiteMiddleware',
+    "django.contrib.sites.middleware.CurrentSiteMiddleware",
 ]
 
 DEFAULT_FROM_EMAIL = "info@bergsolawi.ch"
@@ -138,7 +143,7 @@ EMAIL_PORT = int(os.environ.get("JUNTAGRICO_EMAIL_PORT", "25"))
 EMAIL_USE_TLS = os.environ.get("JUNTAGRICO_EMAIL_TLS", "False") == "True"
 EMAIL_USE_SSL = os.environ.get("JUNTAGRICO_EMAIL_SSL", "False") == "True"
 
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+SESSION_SERIALIZER = "django.contrib.sessions.serializers.PickleSerializer"
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
@@ -191,7 +196,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # Mit der Einstellung ‚view‘ können alle, die z.B. Abos im Admin sehen können,
 # diese auch exportieren, was in den meisten Fällen passen sollte:
 
-IMPORT_EXPORT_EXPORT_PERMISSION_CODE = 'view'
+IMPORT_EXPORT_EXPORT_PERMISSION_CODE = "view"
 
 """
      juntagrico Settings
@@ -220,30 +225,25 @@ ORGANISATION_BANK_CONNECTION = {
 }
 SHARE_PRICE = "1111"
 
-CONTACTS = {
-        "general": "info@bergsolawi.ch"
-}
-ORGANISATION_WEBSITE = {
-    'name': "bergsolawi.ch",
-    'url': "https://bergsolawi.ch"
-}
-STYLES = {'static': ["bergsolawi/css/customize.css"]}
+CONTACTS = {"general": "info@bergsolawi.ch"}
+ORGANISATION_WEBSITE = {"name": "bergsolawi.ch", "url": "https://bergsolawi.ch"}
+STYLES = {"static": ["bergsolawi/css/customize.css"]}
 BYLAWS = "https://bergsolawi.ch/resources/statuten.pdf"
 
 # See https://juntagrico.readthedocs.io/en/latest/settings.html#email
 EMAILS = {
-    'welcome': 'mails/willkommen_mail.txt',
-    'co_welcome': 'mails/mitabonnent_willkommen.txt',
+    "welcome": "mails/willkommen_mail.txt",
+    "co_welcome": "mails/mitabonnent_willkommen.txt",
     # 'co_added': 'mails/added_mail.txt',
-    'password': 'mails/password_reset_mail.txt',
+    "password": "mails/password_reset_mail.txt",
     # 'j_reminder': 'mails/job_reminder_mail.txt',
     # 'j_canceled': 'mails/job_canceled_mail.txt',
     # 'confirm': 'mails/confirm.txt',
     # 'j_changed': 'mails/job_time_changed_mail.txt',
     # 'j_signup': 'mails/job_signup_mail.txt',
     # 'd_changed': 'mails/depot_changed_mail.txt',
-    's_created': 'mails/anteilsschein_mail.txt',
+    "s_created": "mails/anteilsschein_mail.txt",
     # 'n_sub': 'mails/new_subscription.txt',
-    's_canceled': 'mails/subscription_canceled_mail.txt',
+    "s_canceled": "mails/subscription_canceled_mail.txt",
     # 'm_canceled': 'mails/membership_canceled_mail.txt',
 }
