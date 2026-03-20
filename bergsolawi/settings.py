@@ -4,6 +4,9 @@ Django settings for bergsolawi project.
 
 import os
 
+
+from juntagrico import defaults
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,16 +33,18 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.admin",
+    "juntagrico.apps.JuntagricoAdminConfig",
     "juntagrico_webdav",
     "juntagrico",
-    "fontawesomefree",  # benötigt ab 1.6
     "import_export",  # benötigt ab 1.6
     "impersonate",
     "crispy_forms",
     "adminsortable2",
     "bergsolawi",
     "polymorphic",
+    "crispy_bootstrap4",
+    "django_select2",
+    "djrichtextfield",
 ]
 
 ROOT_URLCONF = "bergsolawi.urls"
@@ -104,6 +109,8 @@ WSGI_APPLICATION = "bergsolawi.wsgi.application"
 
 LANGUAGE_CODE = "de"
 
+DJRICHTEXTFIELD_CONFIG = defaults.richtextfield_config(LANGUAGE_CODE)
+
 SITE_ID = 7
 
 
@@ -137,6 +144,7 @@ MIDDLEWARE = [
 
 DEFAULT_FROM_EMAIL = "info@bergsolawi.ch"
 
+EMAIL_BACKEND = "juntagrico.backends.email.EmailBackend"
 EMAIL_HOST = os.environ.get("JUNTAGRICO_EMAIL_HOST")
 EMAIL_HOST_USER = os.environ.get("JUNTAGRICO_EMAIL_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("JUNTAGRICO_EMAIL_PASSWORD")
@@ -144,7 +152,6 @@ EMAIL_PORT = int(os.environ.get("JUNTAGRICO_EMAIL_PORT", "25"))
 EMAIL_USE_TLS = os.environ.get("JUNTAGRICO_EMAIL_TLS", "False") == "True"
 EMAIL_USE_SSL = os.environ.get("JUNTAGRICO_EMAIL_SSL", "False") == "True"
 
-SESSION_SERIALIZER = "django.contrib.sessions.serializers.PickleSerializer"
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
@@ -152,6 +159,10 @@ STORAGES = {
     "staticfiles": {
         "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
     },
+}
+
+VOCABULARY = {
+    "from": "{} ({})"  # Absender von E-mails werden als „Name (Bergsolawi)“ angegeben.
 }
 
 WHITELIST_EMAILS = []
