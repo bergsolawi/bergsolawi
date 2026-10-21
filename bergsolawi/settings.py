@@ -183,9 +183,7 @@ if DEBUG is True:
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "/static/"
 
-IMPERSONATE = {
-    "REDIRECT_URL": "/my/profile",
-}
+IMPERSONATE = {"REDIRECT_URL": "/my/profile", "REQUIRE_SUPERUSER": True}
 
 LOGIN_REDIRECT_URL = "/"
 
