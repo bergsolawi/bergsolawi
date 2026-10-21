@@ -3,7 +3,7 @@ Django settings for bergsolawi project.
 """
 
 import os
-
+from datetime import timedelta
 
 from juntagrico import defaults
 
@@ -27,6 +27,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    "axes",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -127,6 +128,7 @@ DATE_INPUT_FORMATS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
+    "axes.backends.AxesStandaloneBackend",
     "juntagrico.util.auth.AuthenticateWithEmail",
     "django.contrib.auth.backends.ModelBackend",
 )
@@ -140,6 +142,15 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "impersonate.middleware.ImpersonateMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
+    "axes.middleware.AxesMiddleware",
+]
+
+# Axes: Block an IP for 30 minutes after 3 failed login attempts.
+AXES_FAILURE_LIMIT = 3
+AXES_COOLOFF_TIME = timedelta(minutes=30)
+AXES_IPWARE_META_PRECEDENCE_ORDER = [
+    "HTTP_X_FORWARDED_FOR",
+    "REMOTE_ADDR",
 ]
 
 DEFAULT_FROM_EMAIL = "info@bergsolawi.ch"
