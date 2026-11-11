@@ -23,6 +23,10 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
 ]
 
+# Send Cookies only over secure connection.
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 
 # Application definition
 
@@ -133,16 +137,27 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
 )
 
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        "NAME": "juntagrico.password_validation.PermittedOnlyPasswordValidator",
+        "OPTIONS": {
+            "validators": defaults.password_validators,
+        },
+    }
+]
+
 
 MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "juntagrico.middleware.RequirePasswordChangeMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "impersonate.middleware.ImpersonateMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
     "axes.middleware.AxesMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 # Axes: Block an IP for 30 minutes after 3 failed login attempts.
