@@ -1,5 +1,5 @@
 juntagrico~=2.0.0
-gunicorn==22.0.0
+gunicorn~=27.0.0
 juntagrico-webdav~=2.0.0
 psycopg==3.3.8
 django-axes[ipware]~=8.3.1
