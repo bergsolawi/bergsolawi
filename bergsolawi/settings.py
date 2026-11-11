@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "juntagrico_webdav",
     "juntagrico",
     "import_export",  # benötigt ab 1.6
-    "impersonate",
     "crispy_forms",
     "adminsortable2",
     "bergsolawi",
@@ -154,7 +153,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "juntagrico.middleware.RequirePasswordChangeMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "impersonate.middleware.ImpersonateMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
     "axes.middleware.AxesMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",

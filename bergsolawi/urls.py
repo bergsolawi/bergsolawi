@@ -23,5 +23,4 @@ urlpatterns = [
     path(r"admin/", admin.site.urls),
     path(r"", include("juntagrico.urls")),
     path(r"", include("juntagrico_webdav.urls")),  # FIXME: What to put here?
-    path(r"impersonate/", include("impersonate.urls")),
 ]
